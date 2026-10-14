@@ -9,7 +9,7 @@ class BankAccount:
             raise ValueError("Lower than minimum balance")
         self.balance = balance
         self.transactions = []
-        self.total_accounts += 1
+        BankAccount.total_accounts += 1
 
     def deposit(self,amount: float = 0.0):
         amount = BankAccount.validate_amount(amount)
