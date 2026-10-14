@@ -1,4 +1,4 @@
-from account import BankAccount
+from .account import BankAccount
 
 def main():
     acc_holders = {}
