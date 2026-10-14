@@ -20,6 +20,7 @@
 | get_transactions_list()|
 |------------------------|
 
+
 1. BankAccount is class
 2. bank_name, MIN_BALANCE, total_accounts are class attributes because they are shared among all objects not particular for any one object.
 3. owner, balance, transactions are instance attributes because they are dependent on different objects.
