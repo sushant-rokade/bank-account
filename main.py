@@ -1,19 +1,12 @@
 from account import BankAccount
-
-def print_user_data(account):
-    if(account!=None):
-        print(account.owner," ",account.balance)
-    else:
-        print("Invalid Account")
-
 user1 = None
 try: 
-    user1 = BankAccount('Sushant',9090099)
+    user1 = BankAccount('Sushant',90000)
 except ValueError as e:
     print(e)
 user2 = None
 try: 
-    user2 = BankAccount('Rohit',700000)
+    user2 = BankAccount('Rohit',7000)
 except ValueError as e:
     print(e)
 user3 = None
@@ -27,16 +20,21 @@ try:
 except ValueError as e:
     print(e)
 
+print(user1.summary() if user1 != None else 'None')
+print(user2.summary() if user2 != None else 'None')
+print(user3.summary() if user3 != None else 'None')
+print(user4.summary() if user4 != None else ('None'))
 
-print_user_data(user1)
-print_user_data(user2)
-print_user_data(user3)
-print_user_data(user4)
+# Added Deposit
+user1.deposit(5000)
+print(user1.summary())
+# Withdraw 
+user1.withdraw(2000)
+print(user1.summary())
 
-print("\n Removing balance 5000 from Mukesh ")
-if(user4 != None):
-    user4.balance -= 5000
+# Transaction
+user1.transfer_to(user3, 20000)
+print(user1.summary())
+print(user3.summary())
 
-print_user_data(user1)
-print_user_data(user2)
-print_user_data(user3)
+# self is reference to the current object, we can also use different name but 'self' is industry standard.
