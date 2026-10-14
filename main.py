@@ -26,15 +26,26 @@ print(user3.summary() if user3 != None else 'None')
 print(user4.summary() if user4 != None else ('None'))
 
 # Added Deposit
+print("Deposit:",end=" ")
 user1.deposit(5000)
 print(user1.summary())
-# Withdraw 
+print("Withdraw:",end=" ")
 user1.withdraw(2000)
 print(user1.summary())
+print("Withdraw more than deposit:",end=" ")
+try:
+    print(user1.withdraw(100000))
+except ValueError as e:
+    print(e,"(failed withdrawal).")
 
 # Transaction
+print("Transaction from user3 to user1")
 user1.transfer_to(user3, 20000)
 print(user1.summary())
 print(user3.summary())
+
+#Adding in vipul
+print("Adding deposit in Vipul:",end=" ")
+print(BankAccount('Vipul',40000).deposit(1000))
 
 # self is reference to the current object, we can also use different name but 'self' is industry standard.

@@ -8,12 +8,12 @@ class BankAccount:
         self.balance = balance
         self.transactions = []
 
-    def deposit(self,amount):
+    def deposit(self,amount: float = 0.0):
         self.balance += amount
         self.transactions.append(("deposit", amount, self.balance))
         return self.balance
 
-    def withdraw(self, amount):
+    def withdraw(self, amount: float = 0.0):
         if amount < BankAccount.MIN_BALANCE or amount > self.balance:
             raise ValueError("Insufficient funds")
         self.balance -= amount
