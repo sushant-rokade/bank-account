@@ -16,7 +16,7 @@ except ValueError as e:
     print(e)
 user4 = None
 try:
-    user4 = BankAccount('Mukesh',-1)
+    user4 = BankAccount('Sukesh',-1)
 except ValueError as e:
     print(e)
 
@@ -39,13 +39,18 @@ except ValueError as e:
     print(e,"(failed withdrawal).")
 
 # Transaction
-print("Transaction from user3 to user1")
+print("Transaction from user1 to user3")
 user1.transfer_to(user3, 20000)
 print(user1.summary())
 print(user3.summary())
 
-#Adding in vipul
+# Adding in vipul
 print("Adding deposit in Vipul:",end=" ")
 print(BankAccount('Vipul',40000).deposit(1000))
 
 # self is reference to the current object, we can also use different name but 'self' is industry standard.
+
+print("Validate amount by class BankAccount: ",end="")
+print(BankAccount.validate_amount(100))
+print("Validate amount by object: ",end="")
+print(user1.validate_amount(100))
