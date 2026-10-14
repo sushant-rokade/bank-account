@@ -4,7 +4,7 @@ class BankAccount:
     total_accounts = 0
     
     def __init__(self,owner,balance,transactions=None):
-        self.owner = owner
+        self.owner = self.is_valid_owner(owner)
         if balance < self.MIN_BALANCE :
             raise ValueError("Lower than minimum balance")
         self.balance = balance
@@ -29,6 +29,7 @@ class BankAccount:
         return f'{self.owner} . {BankAccount.format_money(self.balance)}' 
     
     def transfer_to(self, other, amount: float = 0.0):
+        amount = BankAccount.validate_amount(amount)
         amt1 = self.balance
         amt2 = other.balance
         try:
@@ -40,6 +41,9 @@ class BankAccount:
                 self.balance = amt1
                 self.transactions.pop()
             raise ValueError("Transaction failed")
+
+    def get_transactions_list(self):
+        return self.transactions
         
     @staticmethod
     def validate_amount(amount):
@@ -57,10 +61,11 @@ class BankAccount:
 
     @staticmethod
     def is_valid_owner(name):
-        name = name.strip()
+        # name = name.strip()
         if len(name) < 2:
             raise ValueError("owner doesn't even have 2 characters.")
         for i in name.lower():
             if not (i>= 'a' and i<='z'):
                 raise ValueError("owner is not valid")
+        return name
             
